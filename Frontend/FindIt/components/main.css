@@ -35,3 +35,34 @@ p{
     text-align: center;
     /* max-width: fit-content; */
 }
+
+.main-heading {
+  font-size: 35px;
+  margin-left: 8%;
+  color: #003366;
+}
+
+.form-label {
+  font-size: 20px;
+  margin-left: 8%;
+  display: block;
+  color: #333;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.form-input {
+  font-size: 16px;
+  margin-left: 8%;
+  border: 3px solid rgba(124, 156, 204, 0.95);
+  border-radius: 0.4em;
+  height: 40px;
+  width: 22%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.form-input.description {
+  height: 80px;
+  width: 30%;
+}

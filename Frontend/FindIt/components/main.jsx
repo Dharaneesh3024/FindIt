@@ -1,10 +1,17 @@
 import React from "react";
-import { auth } from "./firebase-config";   // adjust path as needed
+import { auth } from "./firebase-config";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-
+import "./main.css"; // External CSS import
+import "primereact/resources/themes/lara-light-cyan/theme.css";
+import { Button } from 'primereact/button'; 
+import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
+import TemplateDemo from "./upload";
 function Main() {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
+
   const handleLogout = async () => {
     try {
       await signOut(auth);
@@ -27,19 +34,29 @@ function Main() {
           </p>
         </div>
       </div>
-      <p style={{fontSize:"35px",marginLeft:"8%"}}>Report Lost or Found Item</p>
-      <label id="label"style={{fontSize:"20px",marginLeft:"8%"}}>Item Title</label><br/><br/>
-      <input id="box" required style={{fontSize:"18px",marginLeft:"8%",borderColor:"powderblue",borderRadius:"0.4em",height:"40px",width:"22%",borderWidth:"3px"}}/>
-      <br/><br/>
-      <label id="label"style={{fontSize:"20px",marginLeft:"8%"}}>Item Type</label><br/><br/>
-      <input id="box" required style={{fontSize:"15px",marginLeft:"8%",borderColor:"powderblue",borderRadius:"0.4em",height:"35px",width:"22%",borderWidth:"3px"}}/>
-      <br/><br/>
-      <label id="label"style={{fontSize:"20px",marginLeft:"8%"}}>Location</label><br/><br/>
-      <input id="box" required style={{fontSize:"15px",marginLeft:"8%",borderColor:"powderblue",borderRadius:"0.4em",height:"50px",width:"22%",borderWidth:"3px"}}/>
-<br/><br/>
-      <label id="label"style={{fontSize:"20px",marginLeft:"8%"}}>Description</label><br/><br/>
-      <input id="box" required style={{fontSize:"15px",marginLeft:"8%",borderColor:"powderblue",borderRadius:"0.4em",height:"80px",width:"30%",borderWidth:"3px"}}/>
 
+      <p className="main-heading">Report Lost or Found Item</p>
+
+      <label className="form-label">Item Title</label>
+      <br /><br />
+      <input className="form-input" required />
+      <br /><br />
+
+      <label className="form-label">Item Type</label>
+      <br /><br />
+      <input className="form-input" required />
+      <br /><br />
+
+      <label className="form-label">Location</label>
+      <br /><br />
+      <input className="form-input" required />
+      <br /><br />
+
+      <label className="form-label">Description</label>
+      <br /><br />
+      <input className="form-input description" required />
+      <br /><br />
+      <TemplateDemo/>
 
     </>
   );
