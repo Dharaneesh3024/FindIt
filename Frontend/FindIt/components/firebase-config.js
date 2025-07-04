@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "",
+  apiKey: "AIzaSyBA4H-NYsnTSb-Hxu3E5XAK7BfddYBHkws",
   authDomain: "findit-3a010.firebaseapp.com",
   projectId: "findit-3a010",
   appId: "1:968108354733:web:56b7d4bbea2914add3ea24"

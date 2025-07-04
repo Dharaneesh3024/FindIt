@@ -1,0 +1,94 @@
+/* ⛔ Do NOT change existing navbar styles */
+.reg:hover {
+  cursor: pointer;
+}
+
+p {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 20px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 25px;
+  background-color: #e7e7e7;
+}
+
+.logo {
+  font-weight: bold;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 25px;
+}
+
+.links {
+  display: flex;
+  gap: 50px;
+}
+
+.reg {
+  color: white;
+  background-color: rgb(0, 140, 255);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 15px;
+  border-radius: 0.5em;
+  padding: 10px 10px;
+  width: 70px;
+  text-align: center;
+}
+
+/* ✅ Upgraded form styles below */
+.main-heading {
+  font-size: 34px;
+  margin: 40px 0 30px 8%;
+  color: #003366;
+}
+
+.form-label {
+  font-size: 18px;
+  margin-left: 8%;
+  margin-bottom: 6px;
+  display: block;
+  font-weight: 500;
+  color: #003366;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form-input {
+  font-size: 16px;
+  margin-left: 8%;
+  margin-bottom: 25px;
+  border: 2px solid #c5d7f2;
+  border-radius: 6px;
+  height: 42px;
+  width: 280px;
+  padding: 10px;
+  background-color: white;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.form-input:focus {
+  border-color: #007bff;
+}
+
+.form-input.description {
+  height: 100px;
+  width: 360px;
+  resize: none;
+}
+.sub{
+  font-size: medium;
+  color: white;
+  background-color:#0271e7;
+  padding: 10px;
+  border-radius: 0.4em;
+  border: none;
+  margin-left: 45%;
+  width: 10%;
+}
+.sub:hover{
+  cursor: pointer;
+  background-color: #0060c7;
+}

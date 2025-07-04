@@ -1,16 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { auth } from "./firebase-config";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import "./main.css"; // External CSS import
-import "primereact/resources/themes/lara-light-cyan/theme.css";
-import { Button } from 'primereact/button'; 
-import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
-import TemplateDemo from "./upload";
+import ImageUpload from "./file_upload";
+import "./main1.css";
+
 function Main() {
   const navigate = useNavigate();
+  const [uploadedImage, setUploadedImage] = useState(null); 
 
   const handleLogout = async () => {
     try {
@@ -20,6 +17,11 @@ function Main() {
     } catch (error) {
       console.error("Logout error:", error.message);
     }
+  };
+
+  const handleImageSelect = (file) => {
+    setUploadedImage(file); 
+    console.log("Selected image file:", file);
   };
 
   return (
@@ -56,8 +58,10 @@ function Main() {
       <br /><br />
       <input className="form-input description" required />
       <br /><br />
-      <TemplateDemo/>
 
+      <ImageUpload onImageSelect={handleImageSelect} />
+      <br/><br/>
+      <button className="sub">Submit</button>
     </>
   );
 }
