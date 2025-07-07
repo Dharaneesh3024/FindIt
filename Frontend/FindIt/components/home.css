@@ -51,13 +51,17 @@ p{
 }
 .para{
     font-family: "Roboto", sans-serif;
-        font-size: 35px;
+        font-size: 34px;
 }
 .sub{
-    font-family: "Sora", sans-serif;
-    margin-left: 20%;
-    margin-right: 20%;
-    text-align: center;
+  color: white;
+  background-color:#228dff;
+  padding: 12px;
+  border-radius: 0.4em;
+  border: none;
+  margin-left: 17%;
+  width:fit-content;
+
 }
 
 .reg:hover{

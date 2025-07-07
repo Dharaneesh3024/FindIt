@@ -4,11 +4,9 @@ import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import ImageUpload from "./file_upload";
 import "./main1.css";
-
 function Main() {
   const navigate = useNavigate();
   const [uploadedImage, setUploadedImage] = useState(null); 
-
   const handleLogout = async () => {
     try {
       await signOut(auth);
@@ -23,7 +21,7 @@ function Main() {
     setUploadedImage(file); 
     console.log("Selected image file:", file);
   };
-
+  
   return (
     <>
       <div className="navbar">
@@ -61,9 +59,8 @@ function Main() {
 
       <ImageUpload onImageSelect={handleImageSelect} />
       <br/><br/>
-      <button className="sub">Submit</button>
+      <button className="submit-btn">Submit</button>
     </>
   );
 }
-
 export default Main;
