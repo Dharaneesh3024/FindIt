@@ -21,14 +21,19 @@ function Main() {
     setUploadedImage(file); 
     console.log("Selected image file:", file);
   };
+  const handleProfile=()=>{
+    navigate("/profile");
+  }
+
   
   return (
     <>
       <div className="navbar">
-        <div className="logo">FindIt</div>
+        <div className="logo" >FindIt</div>
         <div className="links">
-          <p>About</p>
-          <p>Contact</p>
+          <p className="LF">Lost & Found</p>
+          <p className="contact">Contact</p>
+          <p className="profile" onClick={handleProfile}>Profile</p>
           <p className="reg" style={{ cursor: "pointer" }} onClick={handleLogout}>
             Log-out
           </p>

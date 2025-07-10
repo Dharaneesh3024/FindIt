@@ -20,7 +20,7 @@ function Home() {
       if (email.endsWith("@bitsathy.ac.in")) {
         setUserEmail(email);
         alert("Login successful!");
-        navigate("/Main"); // ✅ redirect
+        navigate("/Main"); 
       } else {
         alert("Access denied: Use your @bitsathy.ac.in email.");
         await signOut(auth);
@@ -47,14 +47,15 @@ function Home() {
 
     return () => unsubscribe();
   }, [navigate]);
-
+  
+const handleMain=()=>{
+  navigate('/Main')
+}
   return (
     <>
       <div className="navbar">
-        <div className="logo">FindIt</div>
+        <div className="logo" onClick={handleMain}>FindIt</div>
         <div className="links">
-          <p>About</p>
-          <p>Contact</p>
           <p className="reg" onClick={handleLogin}>Login</p>
         </div>
       </div>

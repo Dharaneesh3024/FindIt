@@ -20,6 +20,9 @@ p{
     font-size: 25px;
 
 }
+.logo:hover{
+    cursor: pointer;
+}
 .links {
     display: flex;
     gap: 50px;

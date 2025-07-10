@@ -88,3 +88,7 @@ p {
   cursor: pointer;
   background-color: #0060c7;
 }
+
+.LF,.contact,.profile:hover{
+  cursor: pointer;
+}
