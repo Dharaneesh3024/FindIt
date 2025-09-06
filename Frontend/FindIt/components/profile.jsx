@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { auth } from "./firebase-config";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { signOut} from "firebase/auth";
 
 function Profile() {
-  const [userEmail, setUserEmail] = useState("");
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -19,21 +18,22 @@ function Profile() {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUserEmail(user.email);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        console.log(currentUser);
+        setUser(currentUser); // store full user object
       } else {
         navigate("/");
       }
     });
 
-    return () => unsubscribe(); 
+    return () => unsubscribe();
   }, [navigate]);
 
   return (
     <>
       <div className="navbar">
-        <div className="logo" onClick={()=>{navigate('/Main')}}>FindIt</div>
+        <div className="logo" onClick={() => navigate("/Main")}>FindIt</div>
         <div className="links">
           <p className="LF">Lost & Found</p>
           <p className="contact">Contact</p>
@@ -46,7 +46,13 @@ function Profile() {
 
       <div className="profile-container">
         <h2>Your Profile</h2>
-        <p><strong>Email:</strong> {userEmail}</p>
+        <p><strong>Email:</strong> {user?.email}</p>
+        <p><strong>Name:</strong> {user?.displayName || "No name set"}</p>
+       <img
+  src={user?.photoURL}
+  alt="profile pic"
+  style={{ borderRadius: "50%", width: "100px", height: "100px" }}
+/>
       </div>
     </>
   );

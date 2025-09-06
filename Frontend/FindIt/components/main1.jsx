@@ -1,12 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"; // 🔥 added useEffect
 import { auth } from "./firebase-config";
-import { signOut } from "firebase/auth";
+import { signOut, onAuthStateChanged } from "firebase/auth"; // 🔥 added onAuthStateChanged
 import { useNavigate } from "react-router-dom";
 import ImageUpload from "./file_upload";
 import "./main1.css";
+
 function Main() {
   const navigate = useNavigate();
   const [uploadedImage, setUploadedImage] = useState(null); 
+  const [user, setUser] = useState(null); 
+
+  
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser);
+      } else {
+        navigate("/"); // if not logged in → redirect to login
+      }
+    });
+
+    return () => unsubscribe();
+  }, [navigate]);
+
   const handleLogout = async () => {
     try {
       await signOut(auth);
@@ -21,15 +37,15 @@ function Main() {
     setUploadedImage(file); 
     console.log("Selected image file:", file);
   };
-  const handleProfile=()=>{
-    navigate("/profile");
-  }
 
-  
+  const handleProfile = () => {
+    navigate("/profile");
+  };
+
   return (
     <>
       <div className="navbar">
-        <div className="logo" >FindIt</div>
+        <div className="logo">FindIt</div>
         <div className="links">
           <p className="LF">Lost & Found</p>
           <p className="contact">Contact</p>
@@ -68,4 +84,5 @@ function Main() {
     </>
   );
 }
+
 export default Main;
