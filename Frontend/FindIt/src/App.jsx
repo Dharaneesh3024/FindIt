@@ -11,7 +11,7 @@ function App() {
    const [data, setData] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/data') 
+    fetch('http://localhost:5000/api/items') 
       .then(res => res.json())
       .then(data => setData(data.message))
       .catch(err => console.error('Error:', err));

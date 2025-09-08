@@ -10,17 +10,14 @@ function Home() {
 
   const handleLogin = async () => {
     try {
-       provider.setCustomParameters({
-        prompt: "select_account",
-      }); 
-
+      provider.setCustomParameters({ prompt: "select_account" });
       const result = await signInWithPopup(auth, provider);
       const email = result.user.email;
 
       if (email.endsWith("@bitsathy.ac.in")) {
         setUserEmail(email);
         alert("Login successful!");
-        navigate("/Main"); 
+        navigate("/Main");
       } else {
         alert("Access denied: Use your @bitsathy.ac.in email.");
         await signOut(auth);
@@ -40,37 +37,41 @@ function Home() {
           setUserEmail(null);
         } else {
           setUserEmail(email);
-          navigate("/Main"); 
+          navigate("/Main");
         }
       }
     });
-
     return () => unsubscribe();
   }, [navigate]);
-  
-const handleMain=()=>{
-  navigate('/Main')
-}
+
   return (
-    <>
-      <div className="navbar">
-        <div className="logo" onClick={handleMain}>FindIt</div>
-        <div className="links">
-          <p className="reg" onClick={handleLogin}>Login</p>
+    <div className="home-page">
+      <div className="home-card">
+        <h2 className="home-welcome">Welcome !!</h2>
+        <p className="home-subtitle">Sign in with your username or BITSathy email</p>
+
+        {/* Username & Password fields */}
+        <form className="home-form">
+          <input type="text" placeholder="Username" className="home-input" />
+          <input type="password" placeholder="Password" className="home-input" />
+          <button type="submit" className="home-btn">Sign In</button>
+        </form>
+
+        {/* Divider */}
+        <div className="home-divider">
+          <span>OR</span>
         </div>
+
+        {/* Google Sign-in button */}
+        <button className="home-google-btn" onClick={handleLogin}>
+          <img
+            src="https://developers.google.com/identity/images/g-logo.png"
+            alt="Google logo"
+          />
+          Sign in with Google
+        </button>
       </div>
-
-      <img src="/components/BIT homepage.png" alt="college-image" className="image" />
-
-      <div className="section">
-        <p className="para">Find Your Lost items with FindIt</p>
-      </div>
-
-      <p className="sub">
-        A centralized platform for students and staff of BITSathy to report,
-        search, and recover lost or found items across the campus.
-      </p>
-    </>
+    </div>
   );
 }
 

@@ -1,43 +1,42 @@
-import React, { useState } from 'react';
-import "./file_upload.css";
+import { useState, useRef, useEffect } from "react";
 
-function ImageUpload({ onImageSelect }) {
-  const [imagePreview, setImagePreview] = useState(null);
+export default function ImageUpload({ onImageSelect, clearTrigger }) {
+  const [preview, setPreview] = useState(null);
+  const fileInputRef = useRef(null);
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-
+  const handleFileChange = (e) => {
+    let file = e.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreview(reader.result);
-        if (onImageSelect) {
-          onImageSelect(file);
-        }
-      };
-      reader.readAsDataURL(file);
+      setPreview(URL.createObjectURL(file)); // show preview
+      onImageSelect(file); // send file to parent
     }
   };
 
+  // Reset preview and file input when clearTrigger changes
+  useEffect(() => {
+    if (clearTrigger) {
+      setPreview(null);
+      if (fileInputRef.current) fileInputRef.current.value = null;
+    }
+  }, [clearTrigger]);
+
   return (
-    <div style={{ margin: '1rem' }}>
+    <div>
       <input
         type="file"
         accept="image/*"
-        onChange={handleImageChange}
-        className="image-upload-input"
+        onChange={handleFileChange}
+        ref={fileInputRef}
       />
-      {imagePreview && (
-        <div style={{ marginLeft: '8%', marginTop: '10px' }}>
+      {preview && (
+        <div style={{ marginTop: "10px" }}>
           <img
-            src={imagePreview}
-            alt="Uploaded Preview"
-            style={{ maxWidth: '250px', borderRadius: '8px' }}
+            src={preview}
+            alt="Preview"
+            style={{ width: "150px", height: "150px", objectFit: "cover" }}
           />
         </div>
       )}
     </div>
   );
 }
-
-export default ImageUpload;
