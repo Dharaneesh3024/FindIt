@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "./firebase-config";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import ImageUpload from "./file_upload"; // for picking file
+import Navbar from "./navbar";
 
 function Main() {
   const navigate = useNavigate();
@@ -57,7 +58,7 @@ function Main() {
         const formDataFile = new FormData();
         formDataFile.append("file", file); // must match backend multer field name
 
-        const uploadRes = await fetch("http://localhost:5000/upload", {
+        const uploadRes = await fetch(`${import.meta.env.VITE_SERVER_APP_URL}/upload`, {
           method: "POST",
           body: formDataFile,
         });
@@ -72,7 +73,7 @@ function Main() {
         imageUrl,
       };
 
-      const response = await fetch("http://localhost:5000/api/items", {
+      const response = await fetch(`${import.meta.env.VITE_SERVER_APP_URL}/api/items`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(itemData),
@@ -99,15 +100,7 @@ function Main() {
   return (
     <div>
       {/* Navbar */}
-      <div className="navbar">
-        <div className="logo" onClick={() => navigate("/Main")}>FindIt</div>
-        <div className="links">
-          <p className="LF">Lost & Found</p>
-          <p className="contact">Contact</p>
-          <p className="profile" onClick={() => navigate("/Profile")}>Profile</p>
-          <p className="reg" style={{ cursor: "pointer" }} onClick={handleLogout}>Log-out</p>
-        </div>
-      </div>
+      <Navbar/>
 
       <p className="main-heading">Report Lost or Found Item</p>
 

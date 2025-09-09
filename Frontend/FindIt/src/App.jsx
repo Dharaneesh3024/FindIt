@@ -6,7 +6,9 @@ import './App.css';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import Profile from '../components/profile';
-
+import AutoLogout from '../components/AutoLogout';
+import Contact from '../components/contact';
+import View from '../components/view';
 function App() {
    const [data, setData] = useState('');
 
@@ -17,12 +19,16 @@ function App() {
       .catch(err => console.error('Error:', err));
   }, []);
   return (
-      
+    <>
+        <AutoLogout/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Main" element={<Main />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/view" element={<View />} />
         </Routes>
+        </>
   );
 }
 
