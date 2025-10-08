@@ -56,7 +56,6 @@ app.post("/api/items", async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 });
-// Fetch all items
 // Get all items
 app.get("/api/items", async (req, res) => {
   try {
@@ -74,7 +73,7 @@ app.delete("/api/items/:id", async (req, res) => {
     res.status(500).json({ error: "Failed to delete post" });
   }
 });
-// Fetch items for a specific user (by email)
+
 app.get("/api/items/user/:email", async (req, res) => {
   try {
     const items = await Item.find({ userEmail: req.params.email }).sort({ _id: -1 });
@@ -84,7 +83,7 @@ app.get("/api/items/user/:email", async (req, res) => {
   }
 });
 
-// Update item (edit popup will use this)
+// Update item 
 app.put("/api/items/:id", async (req, res) => {
   try {
     const updatedItem = await Item.findByIdAndUpdate(
@@ -107,7 +106,6 @@ app.put("/api/items/:id", async (req, res) => {
   }
 });
 
-// ✅ mount messages route
 app.use("/api/messages", messageRoutes);
 
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

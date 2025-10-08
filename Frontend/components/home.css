@@ -38,7 +38,6 @@
   flex-direction: column;
   gap: 15px;
   margin-bottom: 20px;
-
 }
 
 .home-input {
@@ -48,7 +47,6 @@
   font-size: 0.95rem;
   outline: none;
   transition: border 0.3s;
-  
 }
 
 .home-input:focus {
@@ -78,7 +76,6 @@
   margin: 20px 0;
   color: #999;
   font-size: 0.85rem;
-  
 }
 
 .home-divider::before,
@@ -86,7 +83,6 @@
   content: "";
   flex: 1;
   border-bottom: 1px solid #ddd;
-  
 }
 
 .home-divider:not(:empty)::before {
@@ -122,4 +118,47 @@
 
 .home-google-btn:hover {
   background: #f1f1f1;
+}
+
+/* 🌐 Responsive Design */
+@media (max-width: 768px) {
+  .home-card {
+    max-width: 90%;
+    padding: 30px 20px;
+  }
+
+  .home-welcome {
+    font-size: 1.5rem;
+  }
+
+  .home-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .home-input,
+  .home-btn,
+  .home-google-btn {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .home-divider {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-card {
+    max-width: 95%;
+    padding: 24px 16px;
+    border-radius: 10px;
+  }
+
+  .home-welcome {
+    font-size: 1.3rem;
+  }
+
+  .home-subtitle {
+    font-size: 0.85rem;
+  }
 }

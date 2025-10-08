@@ -39,7 +39,8 @@
   outline: none;
   background: #fafafa;
   transition: all 0.3s ease;
-  max-width: 90%;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .contact-form input:focus,
@@ -73,6 +74,7 @@
   background: linear-gradient(135deg, #005ec2, #0078ff);
 }
 
+/* Social section */
 .social-links {
   margin-top: 25px;
 }
@@ -97,4 +99,66 @@
 .social-links a:hover {
   color: #0078ff;
   transform: scale(1.2);
+}
+
+/* 🌐 Responsive Design */
+@media (max-width: 768px) {
+  .contact-page {
+    width: 90%;
+    padding: 24px 18px;
+    margin: 40px auto;
+  }
+
+  .contact-page h2 {
+    font-size: 1.6rem;
+  }
+
+  .contact-page p {
+    font-size: 0.95rem;
+  }
+
+  .contact-form {
+    max-width: 90%;
+    gap: 12px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .contact-form button {
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+
+  .social-links p {
+    font-size: 0.9rem;
+  }
+
+  .social-links .icons {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-page {
+    width: 95%;
+    padding: 20px 14px;
+    border-radius: 10px;
+  }
+
+  .contact-page h2 {
+    font-size: 1.4rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.85rem;
+  }
+
+  .contact-form button {
+    font-size: 0.9rem;
+  }
 }

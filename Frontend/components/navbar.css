@@ -1,0 +1,111 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #000000;
+  background: #ffffff;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #222;
+  color: #fff;
+  padding: 15px 24px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.links {
+  display: flex;
+  gap: 20px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.links p {
+  margin: 0;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.links p:hover {
+  background-color: #444;
+}
+
+/* Hamburger icon */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+/* Animation for X icon */
+.bar1.active {
+  transform: rotate(45deg) translateY(8px);
+}
+
+.bar2.active {
+  opacity: 0;
+}
+
+.bar3.active {
+  transform: rotate(-45deg) translateY(-8px);
+}
+
+/* =============== RESPONSIVE =============== */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: #333;
+    flex-direction: column;
+    align-items: start;
+    width: 200px;
+    padding: 15px;
+    border-radius: 10px 0 0 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: none;
+  }
+
+  .links.open {
+    display: flex;
+  }
+
+  .links p {
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: 1px solid #444;
+  }
+
+  .links p:last-child {
+    border-bottom: none;
+  }
+}
